@@ -27,6 +27,10 @@ Route::prefix('linh-vuc')->group(function(){
 
 		Route::get('/xoa/{id}', 'QAcontroller@Xoalinhvuc')->name('xoa');
 
+		Route::get('/thung-rac', 'QAcontroller@getTrash')->name('trash');
+
+		Route::get('/restore/{id}','QAcontroller@getRestore')->name('restore');
+
 	});
 });
 
@@ -43,6 +47,10 @@ Route::prefix('cau-hoi')->group(function(){
 		Route::post('/sua/{id}', 'CauHoiController@postSuacauhoi')->name('sua-ch');
 
 		Route::get('/xoa/{id}', 'CauHoiController@xoaCauhoi')->name('xoa-ch');
+
+		Route::get('/thung-rac', 'CauHoiController@getTrash')->name('trash');
+
+		Route::get('/restore/{id}','CauHoiController@getRestore')->name('restore');
 	});
 });
 

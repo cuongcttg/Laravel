@@ -13,6 +13,8 @@ class CauHoiController extends Controller
     	return view('cauhoi/DS_Cau_Hoi',$cauhoi);
     }
 
+        
+
     public function getThemMoicauhoi(){
         $linhvuc = LinhVuc::all();
         return view('cauhoi/Them-Moi-Cau-Hoi',compact('linhvuc'));

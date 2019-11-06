@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableCauHoi extends Migration
+class CreateCauHoisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class CreateTableCauHoi extends Migration
      */
     public function up()
     {
-        Schema::create('table_cau_hoi', function (Blueprint $table) {
-            Schema::create('cau_hoi', function (Blueprint $table) {
+        Schema::create('cau_hoi', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('noi_dung');
             $table->integer('linh_vuc_id');
@@ -23,8 +22,8 @@ class CreateTableCauHoi extends Migration
             $table->string('phuong_an_c');
             $table->string('phuong_an_d');
             $table->string('dap_an');
+            $table->softDeletes();
             $table->timestamps();
-        });
         });
     }
 
@@ -35,6 +34,6 @@ class CreateTableCauHoi extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_cau_hoi');
+        Schema::dropIfExists('cau_hoi');
     }
 }

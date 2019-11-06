@@ -30,7 +30,7 @@
 <!-- Datatables init -->
 <script type="text/javascript" charset="utf-8" async defer>
 $(document).ready(function() {
-	$("#cauhoi-datatable").DataTable({
+	$("#linhvuc-datatable").DataTable({
     language: {
         paginate: {
             previous: "<i class='mdi mdi-chevron-left'>",
@@ -42,8 +42,6 @@ $(document).ready(function() {
     	}
     });
 });
-</script>
-
 </script>
 
 <!-- Sweet Alerts js -->
@@ -67,52 +65,46 @@ $(document).ready(function() {
   if (result.value) {
     Swal.fire(
       'Đã xóa!',
-      'Câu hỏi đã được xóa thành công',
+      'Lĩnh vực đã được xóa thành công',
       'success'
     )
-    $url='nguoi-choi/xoa/'+$id;
+    $url='/linh-vuc/xoa/'+$id;
     open($url,"_self")
   }
 })
 	}
 </script>
-
 @endsection
 @section('main-content')
 <div class="row">
 	<div class="col-12">
 	    <div class="card">
 	        <div class="card-body">
-	            <h4 class="header-title">Danh sách các người chơi</h4>
-	            <a href="{{	route('nguoi-choi.them-moi-nc') }}" style="margin-bottom: 10px;" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới người chơi</a>
-	  
-	            <table id="cauhoi-datatable" class="table dt-responsive nowrap">
+	        	@if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+                @endif
+	            <h4 class="header-title">Danh sách các lĩnh vực</h4>
+	            <table id="linhvuc-datatable" class="table dt-responsive nowrap">
 	                <thead>
 	                    <tr>
 	                        <th>ID</th>
-	                        <th>Tên đăng nhập</th>
-	                        
-	                        <th>Email</th>
-	                        <th>Hình đại diện</th>
-	                        <th>Điểm cao nhất</th>
-	                        <th>Credit</th>
+	                        <th>Tên lĩnh vực</th>
 	                        <th></th>
 	                    </tr>
 	                </thead>
+
+
 	                <tbody>	   
-	                    @foreach($nguoichoi as $nc)          	
+	                    @foreach($trash as $lv)          	
 	                    <tr>
-	                        <td>{{ $nc->id }}</td>
-	                        <td>{{ $nc->ten_dang_nhap }}</td>
-	                        
-	                        <td>{{ $nc->email }}</td>
-	                        <td>{{ $nc->hinh_dai_dien }}</td>
-	                        <td>{{ $nc->diem_cao_nhat }}</td>
-	                        <td>{{ $nc->credit }}</td>
+	                        <td>{{ $lv->id }}</td>
+	                        <td>{{ $lv->Ten_linh_vuc }}</td>
 	                        <td>
-	                        	<a href="{{ route('nguoi-choi.sua-nc',$nc->id) }}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil-remove-outline"></i></a>
+	                        	<a href="{{route('linh-vuc.restore',$lv->id)}}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-backup-restore"></i></a>
 	                        	
-	                        	<a onclick="thongbaoxoa({{ $nc->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
+	                        	<a onclick="thongbaoxoa({{ $lv->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
 	                        </td>
 	                    </tr>
 	               	    @endforeach      

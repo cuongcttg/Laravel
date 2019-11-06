@@ -19,6 +19,20 @@ class NguoiChoiController extends Controller
 
     public function postThemNguoiChoi(Request $request){
     	$nguoichoi = new NguoiChoi;
+        $request->validate([
+            'ten_dang_nhap' => 'required|unique:nguoi_choi,ten_dang_nhap',
+            'mat_khau' => 'required|min:6',
+            'email' => 'required|unique:nguoi_choi,email'
+        ],
+        [
+            'ten_dang_nhap.required' =>'Bạn chưa nhập tên đăng nhập',
+            'ten_dang_nhap.unique' =>'Tên đăng nhập đã tồn tại',
+            'mat_khau.min' =>'Mật khẩu phải nhiều hơn 6 ký tự',
+            'mat_khau.required' =>'Bạn chưa nhập mật khẩu',
+            'email.required' =>'Bạn chưa nhập email',
+            'email.unique' =>'email đã tồn tại'
+        ]);
+
     	$nguoichoi->ten_dang_nhap=$request->ten_dang_nhap;
     	$nguoichoi->mat_khau=bcrypt($request->mat_khau);
     	$nguoichoi->email=$request->email;
