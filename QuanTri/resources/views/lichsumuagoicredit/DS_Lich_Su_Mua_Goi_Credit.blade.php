@@ -70,7 +70,7 @@ $(document).ready(function() {
       'Câu hỏi đã được xóa thành công',
       'success'
     )
-    $url='nguoi-choi/xoa/'+$id;
+    $url='goi-credit/xoa/'+$id;
     open($url,"_self")
   }
 })
@@ -83,36 +83,31 @@ $(document).ready(function() {
 	<div class="col-12">
 	    <div class="card">
 	        <div class="card-body">
-	            <h4 class="header-title">Danh sách các người chơi</h4>
-	            <a href="{{	route('nguoi-choi.them-moi-nc') }}" style="margin-bottom: 10px;" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới người chơi</a>
+	            <h4 class="header-title">Danh sách các gói credit</h4>
+	            <a href="{{	route('goi-credit.them-moi-gc') }}" style="margin-bottom: 10px;" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới gói credit</a>
 	  
 	            <table id="cauhoi-datatable" class="table dt-responsive nowrap">
 	                <thead>
 	                    <tr>
 	                        <th>ID</th>
-	                        <th>Tên đăng nhập</th>
-	                        <th>Mật khẩu</th>
-	                        <th>Email</th>
-	                        <th>Hình đại diện</th>
-	                        <th>Điểm cao nhất</th>
+	                        <th>Người Chơi</th>
+	                        <th>Goi Credit </th>
 	                        <th>Credit</th>
-	                        <th></th>
+	                        <th>Số tiền</th>
 	                    </tr>
 	                </thead>
 	                <tbody>	   
-	                    @foreach($nguoichoi as $nc)          	
+	                    @foreach($nguoichoi as $gc)          	
 	                    <tr>
-	                        <td>{{ $nc->id }}</td>
-	                        <td>{{ $nc->ten_dang_nhap }}</td>
-	                        <td>{{ $nc->mat_khau }}</td>
-	                        <td>{{ $nc->emali }}</td>
-	                        <td>{{ $nc->hinh_dai_dien }}</td>
-	                        <td>{{ $nc->diem_cao_nhat }}</td>
-	                        <td>{{ $nc->credit }}</td>
+	                        <td>{{ $gc->id }}</td>
+	                        <td>{{ $gc->ten_dang_nhap }}</td>
+	                        <td>{{ $gc->ten_goi }}</td>
+	                        <td>{{ $gc->credit }}</td>
+	                        <td>{{ $gc->so_tien }}</td>
 	                        <td>
-	                        	<a href="{{ route('nguoi-choi.sua-nc',$nc->id) }}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil-remove-outline"></i></a>
+	                        	<a href="{{ route('goi-credit.sua-gc',$gc->id) }}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil-remove-outline"></i></a>
 	                        	
-	                        	<a onclick="thongbaoxoa({{ $nc->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
+	                        	<a onclick="thongbaoxoa({{ $gc->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
 	                        </td>
 	                    </tr>
 	               	    @endforeach      

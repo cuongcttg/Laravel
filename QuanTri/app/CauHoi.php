@@ -1,12 +1,14 @@
 <?php
 
 namespace App;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class CauHoi extends Model
 {
-	use SoftDeletes;
-    protected $table = 'cau_hoi';
-    protected $dates = ['deleted_at'];
+    protected $table ='cau_hoi';
+
+
+    public function LK_CauHoi_LinhVuc(){
+    	return $this->belongsTo('App\LinhVuc','linh_vuc_id','id');
+    }
 }
