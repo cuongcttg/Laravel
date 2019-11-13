@@ -350,7 +350,20 @@
                     <a href="{{ route('nguoi-choi.danh-sach') }}" >
                         <i class="la la-user"></i>Người chơi</a>
                 </li>
+
+                <li class="has-submenu ">
+                    <a href="{{route ('dang-xuat.danh-sach')}}" >
+                        <i class="la la-user"></i>lịch Sử Mua Credit</a>
+                </li>
                 
+
+
+                <li class="has-submenu ">
+                    <a href="{{route('chi-tiet.danh-sach') }}">
+                        <i class="la la-user"></i>Chi tiết lượt chơi</a>
+                </li>
+                
+
                 <li class="has-submenu ">
                     <a href="{{ route('goi-credit.danh-sach') }}" >
                         <i class="la la-credit-card"></i>Gói credit</a>
@@ -358,10 +371,10 @@
 
                 <li class="has-submenu">
                     <a href="#">
-                        <i class="la la-diamond"></i>Components <div class="arrow-down"></div></a>
+                        <i class="la la-diamond"></i>lich su <div class="arrow-down"></div></a>
                     <ul class="submenu">
                         <li class="has-submenu">
-                            <a href="#"><i class="fe-bookmark mr-1"></i> Forms <div class="arrow-down"></div></a>
+                            <a href="#"><i class="fe-bookmark mr-1"></i> sss <div class="arrow-down"></div></a>
                             <ul class="submenu">
                                 <li>
                                     <a href="forms-elements.html">General Elements</a>
