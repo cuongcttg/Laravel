@@ -37,7 +37,7 @@
                 </div>
                 @endif
 
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/from-data">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
                         <label for="tenDangNhap">Tên đăng nhập</label>
@@ -47,7 +47,7 @@
                         <label for="hoTen">email</label>
                         <input type="email" class="form-control" name="email"  >
                         <label for="hinhDaiDien">Hình đại diện</label>
-                        <input type="text" class="form-control" name="hinh_dai_dien"  >
+                        <input type="file" class="form-control" name="hinh_dai_dien"  >
                         <label for="diemCaoNhat">Điểm cao nhất</label>
                         <input type="text" class="form-control" name="diem_cao_nhat"  >                        
                         <label for="credit">Credit</label>

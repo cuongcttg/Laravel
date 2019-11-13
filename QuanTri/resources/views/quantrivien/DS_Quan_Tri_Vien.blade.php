@@ -91,7 +91,6 @@ $(document).ready(function() {
 	                    <tr>
 	                        <th>ID</th>
 	                        <th>Tên đăng nhập</th>
-	                        <th>Mật khẩu</th>
 	                        <th>Họ tên</th>
 	                        <th></th>
 	                    </tr>
@@ -101,11 +100,10 @@ $(document).ready(function() {
 	                    <tr>
 	                        <td>{{ $qtv->id }}</td>
 	                        <td>{{ $qtv->ten_dang_nhap }}</td>
-	                        <td>{{ $qtv->mat_khau }}</td>
 	                        <td>{{ $qtv->ho_ten }}</td>
 	                        <td>
 	                        	<a href="{{ route('quan-tri-vien.sua-qtv',$qtv->id) }}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil-remove-outline"></i></a>
-	                        	
+	      
 	                        	<a onclick="thongbaoxoa({{ $qtv->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
 	                        </td>
 	                    </tr>

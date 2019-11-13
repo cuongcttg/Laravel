@@ -123,12 +123,12 @@
 
                 </div>
             </li>
-
+            @if(Auth::check())
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ml-1">
-                        <i class="mdi mdi-chevron-down"></i> 
+                     {{Auth::user()->ho_ten}}   <i class="mdi mdi-chevron-down"></i> 
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -166,7 +166,7 @@
                     </a>
                 </div>
             </li>
-
+            
             <li class="dropdown notification-list">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
                     <i class="fe-settings noti-icon"></i>
@@ -174,7 +174,7 @@
             </li>
 
         </ul>
-
+        @endif
         <!-- LOGO -->
         <div class="logo-box">
             <a href="index.html" class="logo text-center">
