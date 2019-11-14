@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -113,3 +113,9 @@ Route::get('dang-xuat', 'QuanTriVienController@getDangXuat')->name('dang-xuat');
 
 Route::get('lich-su-mua','LichSuMuaCreditController@getlichsumuacredit')->name('credit.danh-sach');
 Route::get('chi-tiet-luot-choi','ChiTietLuotChoiController@getChiTietLuotChoi')->name('chi-tiet.danh-sach');
+
+Route::get('cau-hinh-diem-cau-hoi','CauHinhDiemCauHoiController@getCauHinhDiemCauHoi')->name('cauhinhdiemcauhoi.danhsach');
+
+Route::get('cau-hinh-app','CauHinhAppController@getCauHinhApp')->name('cauhinhapp.danhsach');
+
+Route::get('cau-hinh-tro-giup','CauHinhTroGiupController@getCauHinhTroGiup')->name('cauhinhtrogiup.danhsach');
