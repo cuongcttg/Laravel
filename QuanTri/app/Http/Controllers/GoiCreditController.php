@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\GoiCredit;
+use DB;
 use Illuminate\Http\Request;
 
 class GoiCreditController extends Controller
@@ -10,6 +11,17 @@ class GoiCreditController extends Controller
     	$goicredit = GoiCredit::all();
 
     	return view('credit/DS_Goi_Credit',['goicredit'=>$goicredit]);
+    }
+
+    public function getTrash(){
+        $trash = DB::table('goi_credit')->whereNotNull('deleted_at')->get();
+        return view('credit/Thung-Rac-Goi-Credit',['trash'=>$trash]);
+    }
+
+    public function getRestore($id){
+        $goicredit = GoiCredit::withTrashed()->find($id)->restore();
+
+        return redirect('goi-credit/thung-rac')->with('success','Phục hồi thành công');
     }
 
     public function getThemMoiGoiCredit(){

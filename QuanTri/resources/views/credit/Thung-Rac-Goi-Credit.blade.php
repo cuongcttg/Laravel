@@ -68,7 +68,7 @@ $(document).ready(function() {
       'Lĩnh vực đã được xóa thành công',
       'success'
     )
-    $url='linh-vuc/xoa/'+$id;
+    $url='/linh-vuc/xoa/'+$id;
     open($url,"_self")
   }
 })
@@ -80,34 +80,39 @@ $(document).ready(function() {
 	<div class="col-12">
 	    <div class="card">
 	        <div class="card-body">
-	            <h4 class="header-title">Danh sách các lĩnh vực</h4>
-	            <a href="{{	route('linh-vuc.them-moi') }}" style="margin-bottom: 10px;" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới lĩnh vực</a>
-	  
+	        	@if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+                @endif
+	            <h4 class="header-title">Danh sách các gói credit</h4>
 	            <table id="linhvuc-datatable" class="table dt-responsive nowrap">
 	                <thead>
 	                    <tr>
 	                        <th>ID</th>
-	                        <th>Tên lĩnh vực</th>
+	                        <th>Tên gói</th>
+	                        <th>Số tiền</th>
+	                        <th>Credit</th>
 	                        <th></th>
 	                    </tr>
 	                </thead>
-
-
 	                <tbody>	   
-	                    @foreach($linhvuc as $lv)
+	                    @foreach($trash as $gc)          	
 	                    <tr>
-	                        <td>{{ $lv->id }}</td>
-	                        <td>{{ $lv->Ten_linh_vuc }}</td>
+	                        <td>{{ $gc->id }}</td>
+	                        <td>{{ $gc->ten_goi }}</td>
+	                        <td>{{ $gc->so_tien }}</td>
+	                        <td>{{ $gc->credit }}</td>
 	                        <td>
-	                        	<a href="{{ route('linh-vuc.sua',$lv->id) }}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil-remove-outline"></i></a>
+	                        	<a href="{{route('goi-credit.restore-gc',$gc->id)}}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-backup-restore"></i></a>
 	                        	
-	                        	<a onclick="thongbaoxoa({{ $lv->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
+	                        	<a onclick="thongbaoxoa({{ $gc->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
 	                        </td>
 	                    </tr>
 	               	    @endforeach      
 	                </tbody>
 	            </table>
-	            <a href="{{	route('linh-vuc.trash') }}" type="button" class="btn btn-dark width-xs waves-effect waves-light">Thùng rác</a>
+
 	        </div> <!-- end card body-->
 	    </div> <!-- end card -->
 	</div><!-- end col-->

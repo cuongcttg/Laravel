@@ -24,6 +24,13 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="mb-3 header-title">Thêm lĩnh vực</h4>
+                @if(count($errors) > 0) 
+                    <div class="alert alert-danger">    
+                        @foreach($errors->all() as $err)    
+                            {{$err}}<br>    
+                        @endforeach 
+                    </div>  
+                @endif
                 @if (session('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}

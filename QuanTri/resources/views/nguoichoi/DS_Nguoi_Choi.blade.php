@@ -85,7 +85,7 @@ $(document).ready(function() {
 	        <div class="card-body">
 	            <h4 class="header-title">Danh sách các người chơi</h4>
 	            <a href="{{	route('nguoi-choi.them-moi-nc') }}" style="margin-bottom: 10px;" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới người chơi</a>
-	  
+	  			
 	            <table id="cauhoi-datatable" class="table dt-responsive nowrap">
 	                <thead>
 	                    <tr>
@@ -105,20 +105,19 @@ $(document).ready(function() {
 	                        <td>{{ $nc->id }}</td>
 	                        <td>{{ $nc->ten_dang_nhap }}</td>
 	                        <td>{{ $nc->mat_khau }}</td>
-	                        <td>{{ $nc->emali }}</td>
+	                        <td>{{ $nc->email }}</td>
 	                        <td>{{ $nc->hinh_dai_dien }}</td>
 	                        <td>{{ $nc->diem_cao_nhat }}</td>
 	                        <td>{{ $nc->credit }}</td>
 	                        <td>
 	                        	<a href="{{ route('nguoi-choi.sua-nc',$nc->id) }}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil-remove-outline"></i></a>
-	                        	
 	                        	<a onclick="thongbaoxoa({{ $nc->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
 	                        </td>
 	                    </tr>
 	               	    @endforeach      
 	                </tbody>
 	            </table>
-
+				<a href="{{route('nguoi-choi.trash-nc')}}" type="button" class="btn btn-dark width-xs waves-effect waves-light">Thùng rác</a>
 	        </div> <!-- end card body-->
 	    </div> <!-- end card -->
 	</div><!-- end col-->

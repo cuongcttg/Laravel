@@ -27,6 +27,10 @@ Route::prefix('linh-vuc')->group(function(){
 
 		Route::get('/xoa/{id}', 'QAcontroller@Xoalinhvuc')->name('xoa');
 
+		Route::get('/thung-rac', 'QAcontroller@getTrash')->name('trash');
+
+		Route::get('/restore/{id}','QAcontroller@getRestore')->name('restore');
+
 	});
 });
 
@@ -75,6 +79,10 @@ Route::prefix('nguoi-choi')->group(function(){
 		Route::post('/sua/{id}', 'NguoiChoiController@postSuaNguoiChoi')->name('sua-nc');
 
 		Route::get('/xoa/{id}', 'NguoiChoiController@xoaNguoiChoi')->name('xoa-nc');
+
+		Route::get('/thung-rac','NguoiChoiController@getTrash')->name('trash-nc');
+
+		Route::get('/restore/{id} ','NguoiChoiController@getRestore')->name('restore-nc');
 	});
 });
 
@@ -90,7 +98,11 @@ Route::prefix('goi-credit')->group(function(){
 
 		Route::post('/sua/{id}', 'GoiCreditController@postSuaGoiCredit')->name('sua-gc');
 
-		Route::get('/xoa/{id}', 'GoiCreditController@xoaGoiCredit')->name('xoa-nc');
+		Route::get('/xoa/{id}', 'GoiCreditController@xoaGoiCredit')->name('xoa-gc');
+
+		Route::get('/thung-rac','GoiCreditController@getTrash')->name('trash-gc');
+
+		Route::get('/restore/{id} ','GoiCreditController@getRestore')->name('restore-gc');
 	});
 });
 
@@ -99,5 +111,5 @@ Route::post('dang-nhap','QuanTriVienController@postDangNhap');
 
 Route::get('dang-xuat', 'QuanTriVienController@getDangXuat')->name('dang-xuat');
 
-Route::get('lich-su-mua','LichSuMuaCreditController@getlichsumuacredit')->name('dang-xuat.danh-sach');
+Route::get('lich-su-mua','LichSuMuaCreditController@getlichsumuacredit')->name('credit.danh-sach');
 Route::get('chi-tiet-luot-choi','ChiTietLuotChoiController@getChiTietLuotChoi')->name('chi-tiet.danh-sach');

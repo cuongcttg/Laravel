@@ -20,6 +20,25 @@ class CauHoiController extends Controller
 
 
     public function postThemcauhoi(Request $request){
+        $request->validate([
+            'noi_dung' => 'required|unique:cau_hoi,noi_dung',
+            'phuong_an_a' => 'required',
+            'phuong_an_b' => 'required',
+            'phuong_an_c' => 'required',
+            'phuong_an_d' => 'required',
+            'dap_an' => 'required',
+        ],
+        [
+            'noi_dung.required' =>'Bạn chưa nhập nội dung',
+            'noi_dung.unique' =>'nội dung đã tồn tại',
+            'phuong_an_a.required' =>'Bạn chưa nhập phương án A',
+            'phuong_an_b.required' =>'Bạn chưa nhập phương án B',
+            'phuong_an_c.required' =>'Bạn chưa nhập phương án C',
+            'phuong_an_d.required' =>'Bạn chưa nhập phương án D',
+            'dap_an.required' =>'Bạn chưa nhập đáp án',
+
+        ]);
+
         $cauhoi = new CauHoi;
         $cauhoi->noi_dung = $request->noi_dung;
         $cauhoi->linh_vuc_id = $request->linh_vuc_id;

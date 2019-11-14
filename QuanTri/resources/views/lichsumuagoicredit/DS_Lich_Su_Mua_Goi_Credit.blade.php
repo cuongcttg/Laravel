@@ -84,14 +84,13 @@ $(document).ready(function() {
 	    <div class="card">
 	        <div class="card-body">
 	            <h4 class="header-title">Danh sách các gói credit</h4>
-	            <a href="{{	route('goi-credit.them-moi-gc') }}" style="margin-bottom: 10px;" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới gói credit</a>
 	  
 	            <table id="cauhoi-datatable" class="table dt-responsive nowrap">
 	                <thead>
 	                    <tr>
 	                        <th>ID</th>
 	                        <th>Người Chơi</th>
-	                        <th>Goi Credit </th>
+	                        <th>Gói Credit </th>
 	                        <th>Credit</th>
 	                        <th>Số tiền</th>
 	                    </tr>
@@ -113,7 +112,6 @@ $(document).ready(function() {
 	               	    @endforeach      
 	                </tbody>
 	            </table>
-
 	        </div> <!-- end card body-->
 	    </div> <!-- end card -->
 	</div><!-- end col-->

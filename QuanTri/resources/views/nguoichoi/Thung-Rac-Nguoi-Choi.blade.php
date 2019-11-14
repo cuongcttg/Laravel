@@ -68,7 +68,7 @@ $(document).ready(function() {
       'Lĩnh vực đã được xóa thành công',
       'success'
     )
-    $url='linh-vuc/xoa/'+$id;
+    $url='/linh-vuc/xoa/'+$id;
     open($url,"_self")
   }
 })
@@ -80,34 +80,45 @@ $(document).ready(function() {
 	<div class="col-12">
 	    <div class="card">
 	        <div class="card-body">
-	            <h4 class="header-title">Danh sách các lĩnh vực</h4>
-	            <a href="{{	route('linh-vuc.them-moi') }}" style="margin-bottom: 10px;" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới lĩnh vực</a>
-	  
-	            <table id="linhvuc-datatable" class="table dt-responsive nowrap">
+	        	@if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+                @endif
+	            <h4 class="header-title">Danh sách các người chơi</h4>
+	            	            <table id="cauhoi-datatable" class="table dt-responsive nowrap">
 	                <thead>
 	                    <tr>
 	                        <th>ID</th>
-	                        <th>Tên lĩnh vực</th>
+	                        <th>Tên đăng nhập</th>
+	                        <th>Mật khẩu</th>
+	                        <th>Email</th>
+	                        <th>Hình đại diện</th>
+	                        <th>Điểm cao nhất</th>
+	                        <th>Credit</th>
 	                        <th></th>
 	                    </tr>
 	                </thead>
-
-
 	                <tbody>	   
-	                    @foreach($linhvuc as $lv)
+	                    @foreach($trash as $nc)          	
 	                    <tr>
-	                        <td>{{ $lv->id }}</td>
-	                        <td>{{ $lv->Ten_linh_vuc }}</td>
+	                        <td>{{ $nc->id }}</td>
+	                        <td>{{ $nc->ten_dang_nhap }}</td>
+	                        <td>{{ $nc->mat_khau }}</td>
+	                        <td>{{ $nc->email }}</td>
+	                        <td>{{ $nc->hinh_dai_dien }}</td>
+	                        <td>{{ $nc->diem_cao_nhat }}</td>
+	                        <td>{{ $nc->credit }}</td>
 	                        <td>
-	                        	<a href="{{ route('linh-vuc.sua',$lv->id) }}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil-remove-outline"></i></a>
+	                        	<a href="{{route('nguoi-choi.restore-nc',$nc->id)}}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-backup-restore"></i></a>
 	                        	
-	                        	<a onclick="thongbaoxoa({{ $lv->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
+	                        	<a onclick="thongbaoxoa({{ $nc->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
 	                        </td>
 	                    </tr>
 	               	    @endforeach      
 	                </tbody>
 	            </table>
-	            <a href="{{	route('linh-vuc.trash') }}" type="button" class="btn btn-dark width-xs waves-effect waves-light">Thùng rác</a>
+
 	        </div> <!-- end card body-->
 	    </div> <!-- end card -->
 	</div><!-- end col-->
