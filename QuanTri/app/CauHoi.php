@@ -10,4 +10,8 @@ class CauHoi extends Model
     protected $table ='cau_hoi';
 
     protected $dates = ['deleted_at'];
+
+    public function linhVuc(){
+    	return $this->belongsTo('App\linhVuc');
+    }
 }

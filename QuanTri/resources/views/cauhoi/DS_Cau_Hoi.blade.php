@@ -85,6 +85,7 @@ $(document).ready(function() {
 	        <div class="card-body">
 	            <h4 class="header-title">Danh sách các câu hỏi</h4>
 	            <a href="{{	route('cau-hoi.them-moi-ch') }}" style="margin-bottom: 10px;" type="button" class="btn btn-primary waves-effect waves-light">Thêm mới câu hỏi</a>
+	            <a href="{{	route('cau-hoi.trash') }}" style="margin-bottom: 10px;" type="button" class="btn btn-dark width-xs waves-effect waves-light">Thùng rác</a>
 	  
 	            <table id="cauhoi-datatable" class="table dt-responsive nowrap">
 	                <thead>
@@ -101,11 +102,11 @@ $(document).ready(function() {
 	                    </tr>
 	                </thead>
 	                <tbody>	   
-	                    @foreach($cauhoilist as $ch)          	
+	                    @foreach($cauhoi as $ch)          	
 	                    <tr>
 	                        <td>{{ $ch->id }}</td>
 	                        <td>{{ $ch->noi_dung }}</td>
-	                        <td>{{ $ch->Ten_linh_vuc }}</td>
+	                        <td>{{ $ch->linhVuc->Ten_linh_vuc }}</td>
 	                        <td>{{ $ch->phuong_an_a }}</td>
 	                        <td>{{ $ch->phuong_an_b }}</td>
 	                        <td>{{ $ch->phuong_an_c}}</td>

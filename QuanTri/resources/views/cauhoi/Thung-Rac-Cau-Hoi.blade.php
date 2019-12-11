@@ -108,14 +108,14 @@ $(document).ready(function() {
 	                    <tr>
 	                        <td>{{ $ch->id }}</td>
 	                        <td>{{ $ch->noi_dung }}</td>
-	                        <td>{{ $ch->linh_vuc_id }}</td>
+	                        <td>{{ $ch->linhVuc->Ten_linh_vuc }}</td>
 	                        <td>{{ $ch->phuong_an_a }}</td>
 	                        <td>{{ $ch->phuong_an_b }}</td>
 	                        <td>{{ $ch->phuong_an_c}}</td>
 	                        <td>{{ $ch->phuong_an_d }}</td>
 	                        <td>{{ $ch->dap_an }}</td>
 	                        <td>
-	                        	<a href="{{ route('cau-hoi.sua-ch',$ch->id) }}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-pencil-remove-outline"></i></a>
+	                        	<a href="{{ route('cau-hoi.restore',$ch->id) }}" type="button" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-backup-restore"></i></a>
 	                        	
 	                        	<a onclick="thongbaoxoa({{ $ch->id }})" type="button" id="btn-xoa" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-trash-can-outline"></i></a>
 	                        </td>

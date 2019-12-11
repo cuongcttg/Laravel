@@ -21,7 +21,7 @@ Route::get('nguoi-choi','NguoiChoiController@layDanhSachNguoiChoi');
 
 Route::get('linh-vuc','QAController@layDanhSachLinhVuc');
 
-Route::get('cau-hoi','CauHoiController@layDanhSachCauHoi');
+Route::get('cau-hoi/{id}','CauHoiController@layDanhSachCauHoi');
 
 Route::get('goi-credit','GoiCreditController@layDanhSachGoiCredit');
 

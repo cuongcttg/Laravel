@@ -12,8 +12,8 @@
 */
 
 Route::get('/', 'QAcontroller@home')->name('home');
-
-Route::prefix('linh-vuc')->group(function(){
+Route::middleware('auth')->group(function(){
+	Route::prefix('linh-vuc')->group(function(){
 	Route::name('linh-vuc.')->group(function(){
 		Route::get('/', 'QAcontroller@getLinhVuc')->name('danh-sach');
 
@@ -32,7 +32,7 @@ Route::prefix('linh-vuc')->group(function(){
 		Route::get('/restore/{id}','QAcontroller@getRestore')->name('restore');
 
 	});
-});
+}) ;
 
 Route::prefix('cau-hoi')->group(function(){
 	Route::name('cau-hoi.')->group(function(){
@@ -47,6 +47,10 @@ Route::prefix('cau-hoi')->group(function(){
 		Route::post('/sua/{id}', 'CauHoiController@postSuacauhoi')->name('sua-ch');
 
 		Route::get('/xoa/{id}', 'CauHoiController@xoaCauhoi')->name('xoa-ch');
+
+		Route::get('/thung-rac', 'CauHoiController@getTrash')->name('trash');
+
+		Route::get('/restore/{id}','CauHoiController@getRestore')->name('restore');
 	});
 });
 
@@ -105,9 +109,11 @@ Route::prefix('goi-credit')->group(function(){
 		Route::get('/restore/{id} ','GoiCreditController@getRestore')->name('restore-gc');
 	});
 });
+});
+
 
 Route::get('dang-nhap','QuanTriVienController@getDangNhap')->middleware('guest');
-Route::post('dang-nhap','QuanTriVienController@postDangNhap');
+Route::post('dang-nhap','QuanTriVienController@postDangNhap')->name('dang-nhap');
 
 Route::get('dang-xuat', 'QuanTriVienController@getDangXuat')->name('dang-xuat');
 

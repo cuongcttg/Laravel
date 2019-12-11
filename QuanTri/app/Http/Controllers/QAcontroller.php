@@ -70,10 +70,10 @@ class QAcontroller extends Controller
     }
 
     public function layDanhSachLinhVuc(Request $request) {
-        $listLinhVuc = LinhVuc::all();
+        $listLinhVuc = LinhVuc::all()->random(4);
 
         return response()->json([
-            'data'  => $listLinhVuc
+            'linh_vuc'  => $listLinhVuc
         ]);
     }
 }

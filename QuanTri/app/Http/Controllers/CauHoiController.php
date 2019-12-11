@@ -9,8 +9,19 @@ use Illuminate\Http\Request;
 class CauHoiController extends Controller
 {
     public function getCauHoi(){
-    	$cauhoi['cauhoilist'] = DB::table('linh_vuc')->join('cau_hoi','linh_vuc.id','=','cau_hoi.linh_vuc_id')->orderBy('cau_hoi.id','desc')->get();
-    	return view('cauhoi/DS_Cau_Hoi',$cauhoi);
+    	$cauhoi = CauHoi::all();
+    	return view('cauhoi/DS_Cau_Hoi',compact('cauhoi'));
+    }
+
+    public function getTrash(){
+        $trash = CauHoi::onlyTrashed()->get();
+        return view('cauhoi/Thung-Rac-Cau-Hoi',compact('trash'));
+    }
+
+    public function getRestore($id){
+        $cauhoi = CauHoi::withTrashed()->find($id)->restore();
+
+        return redirect('cau-hoi/thung-rac')->with('success','Phục hồi thành công');
     }
 
     public function getThemMoicauhoi(){
@@ -83,9 +94,9 @@ class CauHoiController extends Controller
         return redirect('cau-hoi');
     }
 
-    public function layDanhSachCauHoi(Request $request) {
-        $listCauHoi = CauHoi::all();
 
+    public function layDanhSachCauHoi($id) {
+        $listCauHoi = CauHoi::where('linh_vuc_id','=',$id)->get()->random(1);
         return response()->json([
             'data'  => $listCauHoi
         ]);
