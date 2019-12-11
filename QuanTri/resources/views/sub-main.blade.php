@@ -368,6 +368,20 @@
                 </li>
 
                 <li class="has-submenu">
+                    <a href="{{ route('cauhinhdiemcauhoi.danhsach') }}"> 
+                        <i class="la la-cog"></i>Cấu hình điểm</a>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="{{ route('cauhinhapp.danhsach') }}"> 
+                        <i class="la la-gears"></i>Cấu hình app</a>
+                </li>
+                <li class="has-submenu">
+                    <a href="{{ route('cauhinhtrogiup.danhsach') }}"> 
+                        <i class="la la-hand-paper-o"></i>Cấu hình trợ giúp</a>
+                </li>
+
+                <li class="has-submenu">
                     <a href="{{ route('quan-tri-vien.danh-sach') }}"> 
                         <i class="la la-user"></i>Quản trị viên</a>
                 </li>
