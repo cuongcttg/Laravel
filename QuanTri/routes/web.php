@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', 'QAcontroller@home')->name('home');
+
 Route::middleware('auth')->group(function(){
-	Route::prefix('linh-vuc')->group(function(){
+Route::get('/', 'QAcontroller@home')->name('home');
+Route::prefix('linh-vuc')->group(function(){
 	Route::name('linh-vuc.')->group(function(){
 		Route::get('/', 'QAcontroller@getLinhVuc')->name('danh-sach');
 
@@ -109,13 +110,6 @@ Route::prefix('goi-credit')->group(function(){
 		Route::get('/restore/{id} ','GoiCreditController@getRestore')->name('restore-gc');
 	});
 });
-});
-
-
-Route::get('dang-nhap','QuanTriVienController@getDangNhap')->middleware('guest');
-Route::post('dang-nhap','QuanTriVienController@postDangNhap')->name('dang-nhap');
-
-Route::get('dang-xuat', 'QuanTriVienController@getDangXuat')->name('dang-xuat');
 
 Route::get('lich-su-mua','LichSuMuaCreditController@getlichsumuacredit')->name('credit.danh-sach');
 Route::get('chi-tiet-luot-choi','ChiTietLuotChoiController@getChiTietLuotChoi')->name('chi-tiet.danh-sach');
@@ -125,3 +119,12 @@ Route::get('cau-hinh-diem-cau-hoi','CauHinhDiemCauHoiController@getCauHinhDiemCa
 Route::get('cau-hinh-app','CauHinhAppController@getCauHinhApp')->name('cauhinhapp.danhsach');
 
 Route::get('cau-hinh-tro-giup','CauHinhTroGiupController@getCauHinhTroGiup')->name('cauhinhtrogiup.danhsach');
+
+});
+
+
+Route::get('dang-nhap','QuanTriVienController@getDangNhap')->middleware('guest');
+Route::post('dang-nhap','QuanTriVienController@postDangNhap')->name('dang-nhap');
+
+Route::get('dang-xuat', 'QuanTriVienController@getDangXuat')->name('dang-xuat');
+

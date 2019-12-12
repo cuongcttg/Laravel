@@ -99,6 +99,6 @@ class CauHoiController extends Controller
         $listCauHoi = CauHoi::where('linh_vuc_id','=',$id)->get()->random(1);
         return response()->json([
             'data'  => $listCauHoi
-        ]);
+            ]);
     }
 }
