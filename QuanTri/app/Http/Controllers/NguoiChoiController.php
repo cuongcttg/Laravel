@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\NguoiChoi;
 use DB;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NguoiChoiController extends Controller
 {
@@ -11,6 +13,18 @@ class NguoiChoiController extends Controller
         $nguoichoi = NguoiChoi::all();
 
         return view('nguoichoi/DS_Nguoi_Choi',['nguoichoi'=>$nguoichoi]);
+    }
+
+
+    public function layDanhSach(Request $request) {
+        $page = $request->query('page', 1);
+        $limit = $request->query('limit', 25);
+        $listNguoiChoi = nguoichoi::orderBy('diem_cao_nhat', 'desc')->skip(($page - 1) * $limit)->take($limit)->get();
+        return response()->json([
+            'total' => nguoichoi::count(),
+            'data'  => $listNguoiChoi
+        ]);
+   
     }
 
     public function getThemMoiNguoiChoi(){

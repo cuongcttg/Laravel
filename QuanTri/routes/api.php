@@ -29,5 +29,9 @@ Route::get('chi-tiet-luot-choi','ChiTietLuotChoiController@layDanhChiTietLuotCho
 
 Route::get('lich-su-mua-credit','lich_su_mua_credit@layDanhSachLichSuMuaCredit');
 
+Route::get('nguoichoi','NguoiChoiController@layDanhSach');
+
+
+
 
 

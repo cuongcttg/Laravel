@@ -12,7 +12,7 @@
 */
 
 
-Route::middleware('auth')->group(function(){
+//Route::middleware('auth')->group(function(){
 Route::get('/', 'QAcontroller@home')->name('home');
 Route::prefix('linh-vuc')->group(function(){
 	Route::name('linh-vuc.')->group(function(){
@@ -120,7 +120,7 @@ Route::get('cau-hinh-app','CauHinhAppController@getCauHinhApp')->name('cauhinhap
 
 Route::get('cau-hinh-tro-giup','CauHinhTroGiupController@getCauHinhTroGiup')->name('cauhinhtrogiup.danhsach');
 
-});
+//});
 
 
 Route::get('dang-nhap','QuanTriVienController@getDangNhap')->middleware('guest');
